@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203E6DBA24CD5BFF00398C2F /* MovInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E6DB924CD5BFF00398C2F /* MovInfoManager.swift */; };
+		203E6DBD24CD5C5100398C2F /* MovInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E6DBC24CD5C5100398C2F /* MovInfoData.swift */; };
 		20BCF1A124CC58ED00F075CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1A024CC58ED00F075CC /* AppDelegate.swift */; };
 		20BCF1A324CC58ED00F075CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1A224CC58ED00F075CC /* SceneDelegate.swift */; };
-		20BCF1A524CC58ED00F075CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1A424CC58ED00F075CC /* ViewController.swift */; };
-		20BCF1A824CC58ED00F075CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BCF1A624CC58ED00F075CC /* Main.storyboard */; };
 		20BCF1AA24CC58F000F075CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BCF1A924CC58F000F075CC /* Assets.xcassets */; };
 		20BCF1AD24CC58F000F075CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BCF1AB24CC58F000F075CC /* LaunchScreen.storyboard */; };
+		20BCF1B524CC60BB00F075CC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1B424CC60BB00F075CC /* SearchViewController.swift */; };
+		20BCF1B724CC60EE00F075CC /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1B624CC60EE00F075CC /* MovieViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		203E6DB924CD5BFF00398C2F /* MovInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovInfoManager.swift; sourceTree = "<group>"; };
+		203E6DBC24CD5C5100398C2F /* MovInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovInfoData.swift; sourceTree = "<group>"; };
 		20BCF19D24CC58ED00F075CC /* Movinfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movinfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BCF1A024CC58ED00F075CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20BCF1A224CC58ED00F075CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20BCF1A424CC58ED00F075CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		20BCF1A724CC58ED00F075CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20BCF1A924CC58F000F075CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20BCF1AC24CC58F000F075CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20BCF1AE24CC58F000F075CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20BCF1B424CC60BB00F075CC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		20BCF1B624CC60EE00F075CC /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		203E6DBB24CD5C3C00398C2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				203E6DB924CD5BFF00398C2F /* MovInfoManager.swift */,
+				203E6DBC24CD5C5100398C2F /* MovInfoData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		20BCF19424CC58ED00F075CC = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +71,12 @@
 			children = (
 				20BCF1A024CC58ED00F075CC /* AppDelegate.swift */,
 				20BCF1A224CC58ED00F075CC /* SceneDelegate.swift */,
-				20BCF1A424CC58ED00F075CC /* ViewController.swift */,
-				20BCF1A624CC58ED00F075CC /* Main.storyboard */,
+				20BCF1B424CC60BB00F075CC /* SearchViewController.swift */,
+				20BCF1B624CC60EE00F075CC /* MovieViewController.swift */,
 				20BCF1A924CC58F000F075CC /* Assets.xcassets */,
 				20BCF1AB24CC58F000F075CC /* LaunchScreen.storyboard */,
 				20BCF1AE24CC58F000F075CC /* Info.plist */,
+				203E6DBB24CD5C3C00398C2F /* Model */,
 			);
 			path = Movinfo;
 			sourceTree = "<group>";
@@ -127,7 +141,6 @@
 			files = (
 				20BCF1AD24CC58F000F075CC /* LaunchScreen.storyboard in Resources */,
 				20BCF1AA24CC58F000F075CC /* Assets.xcassets in Resources */,
-				20BCF1A824CC58ED00F075CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +151,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20BCF1A524CC58ED00F075CC /* ViewController.swift in Sources */,
+				203E6DBD24CD5C5100398C2F /* MovInfoData.swift in Sources */,
 				20BCF1A124CC58ED00F075CC /* AppDelegate.swift in Sources */,
+				203E6DBA24CD5BFF00398C2F /* MovInfoManager.swift in Sources */,
+				20BCF1B524CC60BB00F075CC /* SearchViewController.swift in Sources */,
 				20BCF1A324CC58ED00F075CC /* SceneDelegate.swift in Sources */,
+				20BCF1B724CC60EE00F075CC /* MovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		20BCF1A624CC58ED00F075CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				20BCF1A724CC58ED00F075CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		20BCF1AB24CC58F000F075CC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mohamedattar.demo.Movinfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mohamedattar.demo.Movinfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
