@@ -68,8 +68,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(movieDetailsStackView)
         movieDetailsStackView.axis         = .vertical
         movieDetailsStackView.spacing      = 30
-        movieDetailsStackView.alignment    = .bottom
-        movieDetailsStackView.distribution = .fillProportionally
+        movieDetailsStackView.alignment    = .center
+        movieDetailsStackView.distribution = .fill
         
         
         // Creating Elements
@@ -99,6 +99,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // Constraints
         movieNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        //movieNameLabel.leadingAnchor.constraint(equalTo: yearTextField.leadingAnchor).isActive = true
     }
     
     func createYearLabel() {
@@ -107,6 +108,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // Constraints
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
+        //yearLabel.leadingAnchor.constraint(equalTo: yearTextField.leadingAnchor).isActive = true
     }
     
     func createMovieYearStackView() {
@@ -185,12 +187,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         // Constraints
         searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     @objc func buttonPressed() {
         let movieVC = MovieViewController()
         movInfoManager.fetchMovieData(movieName: searchMovieTextField.text!)
-        movieVC.title = movInfoManager.getTitle()
         self.navigationController?.pushViewController(movieVC, animated: true)
     }
     

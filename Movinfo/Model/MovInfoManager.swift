@@ -8,14 +8,15 @@
 
 import Foundation
 
-var title:String = "gg"
 
-struct MovInfoManager {
+
+class MovInfoManager {
+    var title:String = "gg"
     
     let movieURL = "https://omdbapi.com/?apikey=6b8b171f"
     var urlString:String?
     
-    mutating func fetchMovieData(movieName: String) {
+    func fetchMovieData(movieName: String) {
         urlString = "\(movieURL)&t=\(movieName)"
         performRequest(urlString: urlString!)
     }
@@ -46,7 +47,7 @@ struct MovInfoManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(MovInfoData.self, from: movInfoData)
-            self.setTitle(t:"\(decodedData.title) \(decodedData.year)")
+             setTitle(t: "\(decodedData.title) \(decodedData.year)")
         } catch {
             print(error)
         }
