@@ -8,7 +8,8 @@
 
 import UIKit
 
-let moviInfoManager = MovInfoManager()
+var title:String!
+
 let movieImage      = UIImage(named: "")
 let downloadButton  = UIButton()
 let detailsButton   = UIButton()

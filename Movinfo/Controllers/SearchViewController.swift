@@ -11,8 +11,8 @@ import UIKit
 
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
-    
-    var movInfoManager = MovInfoManager()
+
+
     static let items = ["Movie", "TV Show"]
 
     let searchMovieTextField    = MVTextField(placeholderText: "e.g. Star Wars", keyboardType: .alphabet)
@@ -122,7 +122,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     @objc func buttonPressed() {
         let movieVC = MovieViewController()
-        movInfoManager.fetchMovieData(movieName: searchMovieTextField.text!)
         self.navigationController?.pushViewController(movieVC, animated: true)
     }
     

@@ -11,51 +11,49 @@ import Foundation
 
 
 class MovInfoManager {
-    var title:String = "gg"
+    static let shared   = MovInfoManager()
+    let baseURL = "https://omdbapi.com/?apikey=6b8b171f"
     
-    let movieURL = "https://omdbapi.com/?apikey=6b8b171f"
-    var urlString:String?
     
-    func fetchMovieData(movieName: String) {
-        urlString = "\(movieURL)&t=\(movieName)"
-        performRequest(urlString: urlString!)
-    }
+     private init() {}
     
-    func performRequest(urlString: String){
+    
+    func fetchMovieData(for movieName: String, movieYear: Int, completed: @escaping (Result<MovInfoData, ErrorMessage>) -> Void) {
+        let endpoint = baseURL + "&t=\(movieName)&y=\(movieYear)"
         
-        //Creating the URL
-        if let url = URL(string: urlString) {
-            // Creating URL Session
-            let session = URLSession(configuration: .default)
-            
-            // Giving the Session a task
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print("Do Not Procees")
-                    return
-                }
-                if let safeData = data {
-                    self.parseJSON(movInfoData: safeData)
-                }
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.badURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let _ = error {
+                completed(.failure(.badURL))
+                return
             }
-            // Starting the task (resuming it from suspension)
-            task.resume()
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.badURL))
+                
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.badURL))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode(MovInfoData.self, from: data)
+                completed(.success(decodedData))
+            } catch {
+                completed(.failure(.badURL))
+                
+            }
         }
-    }
-    
-    func parseJSON(movInfoData: Data){
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(MovInfoData.self, from: movInfoData)
-             setTitle(t: "\(decodedData.title) \(decodedData.year)")
-        } catch {
-            print(error)
-        }
-    }
-    func setTitle(t: String) {
-        title = t
-    }
-    func getTitle() -> String {
-        return title
+         task.resume()
     }
 }
+   
+
