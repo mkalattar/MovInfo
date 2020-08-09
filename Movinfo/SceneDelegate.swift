@@ -31,7 +31,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createMovieVC() -> UIViewController {
         let movieVC     = MovieViewController()
-        movieVC.title   = "Movie Info"
         
         return movieVC
     }

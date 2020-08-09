@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct MovInfoData: Decodable {
+struct MovInfoData: Codable {
+    
     let title:String
     let year:String
+    let poster: String
+    
     enum CodingKeys: String, CodingKey {
-        case title = "Title"
-        case year = "Year"
+        case title      = "Title"
+        case year       = "Year"
+        case poster     = "Poster"
     }
 }

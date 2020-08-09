@@ -105,7 +105,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     func createMovieNameLabel() {
         view.addSubview(movieNameLabel)
-        movieNameLabel.text = "(Required) Movie Name:"
+        movieNameLabel.text = "Movie Name:"
     }
     
     func createYearLabel() {
@@ -132,7 +132,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
         
         let movieVC = MovieViewController()
-        movieVC.movieName = searchMovieTextField.text!
+        let movieNameWithSpaces = searchMovieTextField.text!
+        let movieNameWithoutSpaces = movieNameWithSpaces.replacingOccurrences(of: " ", with: "+")
+        movieVC.movieName = movieNameWithoutSpaces
         self.navigationController?.pushViewController(movieVC, animated: true)
     }
     
