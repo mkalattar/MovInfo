@@ -8,24 +8,36 @@
 
 import UIKit
 
-var title:String!
-
-let movieImage      = UIImage(named: "")
-let downloadButton  = UIButton()
-let detailsButton   = UIButton()
-
 class MovieViewController: UIViewController {
-
+    
+    var movieName:String!
+    
+    let downloadButton  = UIButton()
+    let detailsButton   = UIButton()
+    let movieImage      = UIImage(named: "")
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        getMovie()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-          view.backgroundColor    = .systemGray6
-             
+        view.backgroundColor    = .systemGray6
+        getMovie()
     }
     
-   
-
+    func getMovie() {
+        MovInfoManager.shared.fetchMovieData(for: movieName) { result in
+            switch result {
+            case .success(let mov):
+                DispatchQueue.main.async {
+                    self.title = "\(mov.title) \(mov.year)"
+                }
+            case .failure(_):
+                self.presentAlertVCOnMainThread(title: "Oops!", message: "Couldn't find movie. Please try again.")
+                
+            }
+        }
+    }
+    
 }

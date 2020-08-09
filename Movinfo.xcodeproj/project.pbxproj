@@ -13,6 +13,7 @@
 		2034EA1B24E05EDF00EA7960 /* MVSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1A24E05EDF00EA7960 /* MVSegmentedControl.swift */; };
 		2034EA1F24E069E900EA7960 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1E24E069E900EA7960 /* UIStackView+Ext.swift */; };
 		2034EA2224E0770000EA7960 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA2124E0770000EA7960 /* ErrorMessage.swift */; };
+		2036F7D924E0814D000100D6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2036F7D824E0814D000100D6 /* UIViewController+Ext.swift */; };
 		203E6DBA24CD5BFF00398C2F /* MovInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E6DB924CD5BFF00398C2F /* MovInfoManager.swift */; };
 		203E6DBD24CD5C5100398C2F /* MovInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203E6DBC24CD5C5100398C2F /* MovInfoData.swift */; };
 		20BCF1A124CC58ED00F075CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF1A024CC58ED00F075CC /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 		2034EA1A24E05EDF00EA7960 /* MVSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVSegmentedControl.swift; sourceTree = "<group>"; };
 		2034EA1E24E069E900EA7960 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		2034EA2124E0770000EA7960 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		2036F7D824E0814D000100D6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		203E6DB924CD5BFF00398C2F /* MovInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovInfoManager.swift; sourceTree = "<group>"; };
 		203E6DBC24CD5C5100398C2F /* MovInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovInfoData.swift; sourceTree = "<group>"; };
 		20BCF19D24CC58ED00F075CC /* Movinfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movinfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				2034EA1E24E069E900EA7960 /* UIStackView+Ext.swift */,
+				2036F7D824E0814D000100D6 /* UIViewController+Ext.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2034EA1724E05D7A00EA7960 /* MVButton.swift in Sources */,
+				2036F7D924E0814D000100D6 /* UIViewController+Ext.swift in Sources */,
 				203E6DBD24CD5C5100398C2F /* MovInfoData.swift in Sources */,
 				20BCF1A124CC58ED00F075CC /* AppDelegate.swift in Sources */,
 				2034EA1524E05AD900EA7960 /* MVTextField.swift in Sources */,

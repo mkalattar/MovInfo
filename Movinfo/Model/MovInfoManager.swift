@@ -18,8 +18,8 @@ class MovInfoManager {
      private init() {}
     
     
-    func fetchMovieData(for movieName: String, movieYear: Int, completed: @escaping (Result<MovInfoData, ErrorMessage>) -> Void) {
-        let endpoint = baseURL + "&t=\(movieName)&y=\(movieYear)"
+    func fetchMovieData(for movieName: String, completed: @escaping (Result<MovInfoData, ErrorMessage>) -> Void) {
+        let endpoint = baseURL + "&t=\(movieName)"
         
         guard let url = URL(string: endpoint) else {
             completed(.failure(.badURL))

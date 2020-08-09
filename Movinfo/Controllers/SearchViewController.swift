@@ -22,6 +22,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     let yearLabel               = MVLabel()
     let chooseTypeSegment       = UISegmentedControl(items: items)
     let detailsStackView        = UIStackView()
+    
+    var isMovieNameEntered:Bool {
+        return !searchMovieTextField.text!.isEmpty
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,21 +44,21 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         // Creating elements
         createMovieNameLabel()
         createSearchTextField()
-        createYearLabel()
-        createYearTextField()
-        createChooseTypeSegment()
+//        createYearLabel()
+//        createYearTextField()
+//        createChooseTypeSegment()
         
         // Adding elements
         detailsStackView.addArrangedSubview(movieNameLabel)
         detailsStackView.addArrangedSubview(searchMovieTextField)
-        detailsStackView.addArrangedSubview(yearLabel)
-        detailsStackView.addArrangedSubview(yearTextField)
-        detailsStackView.addArrangedSubview(chooseTypeSegment)
+//        detailsStackView.addArrangedSubview(yearLabel)
+//        detailsStackView.addArrangedSubview(yearTextField)
+//        detailsStackView.addArrangedSubview(chooseTypeSegment)
         
         // Constraints
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            detailsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -130),
+            detailsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             detailsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             detailsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             detailsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50)
@@ -121,7 +125,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func buttonPressed() {
+        
+        guard isMovieNameEntered else {
+            presentAlertVCOnMainThread(title: "Empty Movie name", message: "Please write a movie name.")
+            return
+        }
+        
         let movieVC = MovieViewController()
+        movieVC.movieName = searchMovieTextField.text!
         self.navigationController?.pushViewController(movieVC, animated: true)
     }
     
