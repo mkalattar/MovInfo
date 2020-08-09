@@ -10,7 +10,6 @@ import UIKit
 
 let moviInfoManager = MovInfoManager()
 let movieImage      = UIImage(named: "")
-let movieImageView  = UIImageView(image: image)
 let downloadButton  = UIButton()
 let detailsButton   = UIButton()
 
@@ -23,7 +22,7 @@ class MovieViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
           view.backgroundColor    = .systemGray6
-              self.title = movInfoManager.getTitle()
+             
     }
     
    
