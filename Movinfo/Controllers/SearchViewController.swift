@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     let searchMovieTextField    = MVTextField(placeholderText: "e.g. Star Wars", keyboardType: .alphabet)
     let yearTextField           = MVTextField(placeholderText: "e.g. 1974", keyboardType: .numberPad)
-    let searchButton            = MVButton()
+    let searchButton            = MVGoButton()
     let movieNameLabel          = MVLabel()
     let yearLabel               = MVLabel()
     let chooseTypeSegment       = UISegmentedControl(items: items)
@@ -29,9 +29,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        createDismissKeyboardTapGesture()
         configureDetailsStackView()
         createButton()
         view.backgroundColor = .systemGray6
+    }
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(view.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     
@@ -41,39 +47,29 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         detailsStackView.alignment      = .leading
         detailsStackView.spacing        = 10
         
-        // Creating elements
-        createMovieNameLabel()
-        createSearchTextField()
-//        createYearLabel()
-//        createYearTextField()
-//        createChooseTypeSegment()
-        
-        // Adding elements
-        detailsStackView.addArrangedSubview(movieNameLabel)
-        detailsStackView.addArrangedSubview(searchMovieTextField)
-//        detailsStackView.addArrangedSubview(yearLabel)
-//        detailsStackView.addArrangedSubview(yearTextField)
-//        detailsStackView.addArrangedSubview(chooseTypeSegment)
-        
         // Constraints
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            detailsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            detailsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             detailsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             detailsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             detailsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50)
         ])
+        
+        // Creating elements
+        createMovieNameLabel()
+        createSearchTextField()
     }
     
     
     func createSearchTextField() {
-        view.addSubview(searchMovieTextField)
+        detailsStackView.addArrangedSubview(searchMovieTextField)
         searchMovieTextField.delegate = self
         
         // Constraints
         NSLayoutConstraint.activate([
             searchMovieTextField.heightAnchor.constraint(equalToConstant: 45),
-            searchMovieTextField.trailingAnchor.constraint(equalTo: detailsStackView.trailingAnchor, constant: -50)
+            searchMovieTextField.trailingAnchor.constraint(equalTo: detailsStackView.trailingAnchor)
         ])
         
     }
@@ -104,7 +100,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     
     func createMovieNameLabel() {
-        view.addSubview(movieNameLabel)
+        detailsStackView.addArrangedSubview(movieNameLabel)
         movieNameLabel.text = "Movie Name:"
     }
     
@@ -135,7 +131,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         let movieNameWithSpaces = searchMovieTextField.text!
         let movieNameWithoutSpaces = movieNameWithSpaces.replacingOccurrences(of: " ", with: "+")
         movieVC.movieName = movieNameWithoutSpaces
-        self.navigationController?.pushViewController(movieVC, animated: true)
+        MovInfoManager.shared.fetchMovieData(for: movieNameWithoutSpaces) { result in
+            switch result {
+            case .success(let mov):
+                DispatchQueue.main.async {
+                    movieVC.title = "\(mov.title) \(mov.year)"
+                    self.navigationController?.pushViewController(movieVC, animated: true)
+                }
+                
+            case .failure(_):
+                self.presentAlertVCOnMainThread(title: "Oops!", message: "Couldn't find movie. Please try again.")
+            }
+        }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

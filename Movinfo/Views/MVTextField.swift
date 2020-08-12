@@ -32,6 +32,7 @@ class MVTextField: UITextField {
         backgroundColor        = .systemFill
         clearButtonMode        = .always
         autocapitalizationType = .words
+        tintColor              = .systemYellow
         
         translatesAutoresizingMaskIntoConstraints = false
     }
