@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createNavigationController() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: createSearchVC())
+        UINavigationBar.appearance().tintColor  = .systemYellow
+        let navigationController                = UINavigationController(rootViewController: createSearchVC())
         navigationController.navigationBar.prefersLargeTitles = true
         
         return navigationController
