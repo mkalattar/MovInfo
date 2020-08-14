@@ -12,7 +12,6 @@ class MovieViewController: UIViewController {
     
     var movieName:String!
     
-    let downloadButton  = UIButton()
     let detailsButton   = MVButton(buttonLabel: "Details")
     let image           = UIImage(named: "MVPlaceholder")
     let movieImage      = UIImageView()
@@ -25,21 +24,26 @@ class MovieViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(addTapped))
         view.backgroundColor    = .systemGray6
         getMovie()
+    }
+    
+    @objc func addTapped(){
+        
     }
     
     func configureDetailsButton() {
         view.addSubview(detailsButton)
         
         NSLayoutConstraint.activate([
-            detailsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            detailsButton.centerYAnchor.constraint(equalTo: movieImage.bottomAnchor),
-            detailsButton.leadingAnchor.constraint(equalTo: movieImage.leadingAnchor, constant: 20),
-            detailsButton.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: -20),
-            detailsButton.heightAnchor.constraint(equalToConstant: 44)
+            detailsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            detailsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailsButton.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
+    
     
     func configureImage() {
         view.addSubview(movieImage)
@@ -50,8 +54,10 @@ class MovieViewController: UIViewController {
         // Constraints
         movieImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            movieImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            movieImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            movieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            movieImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            movieImage.widthAnchor.constraint(equalToConstant: 367),
+            movieImage.heightAnchor.constraint(equalToConstant: 550)
         ])
     }
     

@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     let searchMovieTextField    = MVTextField(placeholderText: "e.g. Star Wars", keyboardType: .alphabet)
     let yearTextField           = MVTextField(placeholderText: "e.g. 1974", keyboardType: .numberPad)
-    let searchButton            = MVGoButton()
+    let searchButton            = MVsfButton(shape: "arrow.right.circle.fill")
     let movieNameLabel          = MVLabel()
     let yearLabel               = MVLabel()
     let chooseTypeSegment       = UISegmentedControl(items: items)

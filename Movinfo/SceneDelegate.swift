@@ -40,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchVC    = SearchViewController()
         searchVC.title  = "Search"
         
+        
         return searchVC
     }
 

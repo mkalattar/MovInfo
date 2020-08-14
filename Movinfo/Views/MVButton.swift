@@ -26,9 +26,12 @@ class MVButton: UIButton {
     }
     
     private func configure() {
-        backgroundColor     = .systemYellow
-        layer.cornerRadius  = 20
+        backgroundColor      = .systemYellow
+        layer.cornerRadius   = 20
+        layer.maskedCorners  = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        titleLabel?.font     = UIFont.systemFont(ofSize: 20, weight: .medium)
         setTitleColor(.black, for: .normal)
+              
         
         translatesAutoresizingMaskIntoConstraints = false
     }

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200D27C224E5228C002D9D11 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200D27C124E5228C002D9D11 /* DetailsViewController.swift */; };
 		2034EA1524E05AD900EA7960 /* MVTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1424E05AD900EA7960 /* MVTextField.swift */; };
-		2034EA1724E05D7A00EA7960 /* MVGoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1624E05D7A00EA7960 /* MVGoButton.swift */; };
+		2034EA1724E05D7A00EA7960 /* MVsfButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1624E05D7A00EA7960 /* MVsfButton.swift */; };
 		2034EA1924E05E5000EA7960 /* MVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1824E05E5000EA7960 /* MVLabel.swift */; };
 		2034EA1B24E05EDF00EA7960 /* MVSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1A24E05EDF00EA7960 /* MVSegmentedControl.swift */; };
 		2034EA1F24E069E900EA7960 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034EA1E24E069E900EA7960 /* UIStackView+Ext.swift */; };
@@ -27,8 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200D27C124E5228C002D9D11 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		2034EA1424E05AD900EA7960 /* MVTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVTextField.swift; sourceTree = "<group>"; };
-		2034EA1624E05D7A00EA7960 /* MVGoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGoButton.swift; sourceTree = "<group>"; };
+		2034EA1624E05D7A00EA7960 /* MVsfButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVsfButton.swift; sourceTree = "<group>"; };
 		2034EA1824E05E5000EA7960 /* MVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVLabel.swift; sourceTree = "<group>"; };
 		2034EA1A24E05EDF00EA7960 /* MVSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVSegmentedControl.swift; sourceTree = "<group>"; };
 		2034EA1E24E069E900EA7960 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				2034EA1424E05AD900EA7960 /* MVTextField.swift */,
-				2034EA1624E05D7A00EA7960 /* MVGoButton.swift */,
+				2034EA1624E05D7A00EA7960 /* MVsfButton.swift */,
 				2034EA1824E05E5000EA7960 /* MVLabel.swift */,
 				2034EA1A24E05EDF00EA7960 /* MVSegmentedControl.swift */,
 				20FDDD0324E3F01D00AD73B9 /* MVButton.swift */,
@@ -76,6 +78,7 @@
 			children = (
 				20BCF1B424CC60BB00F075CC /* SearchViewController.swift */,
 				20BCF1B624CC60EE00F075CC /* MovieViewController.swift */,
+				200D27C124E5228C002D9D11 /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2034EA1724E05D7A00EA7960 /* MVGoButton.swift in Sources */,
+				2034EA1724E05D7A00EA7960 /* MVsfButton.swift in Sources */,
 				2036F7D924E0814D000100D6 /* UIViewController+Ext.swift in Sources */,
 				203E6DBD24CD5C5100398C2F /* MovInfoData.swift in Sources */,
 				20BCF1A124CC58ED00F075CC /* AppDelegate.swift in Sources */,
@@ -221,6 +224,7 @@
 				20BCF1B524CC60BB00F075CC /* SearchViewController.swift in Sources */,
 				20BCF1A324CC58ED00F075CC /* SceneDelegate.swift in Sources */,
 				2034EA1F24E069E900EA7960 /* UIStackView+Ext.swift in Sources */,
+				200D27C224E5228C002D9D11 /* DetailsViewController.swift in Sources */,
 				2034EA1B24E05EDF00EA7960 /* MVSegmentedControl.swift in Sources */,
 				20FDDD0424E3F01D00AD73B9 /* MVButton.swift in Sources */,
 				2034EA1924E05E5000EA7960 /* MVLabel.swift in Sources */,

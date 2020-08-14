@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MVGoButton: UIButton {
+class MVsfButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,11 +19,18 @@ class MVGoButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 47, weight: .light, scale: .small)
-        setImage(UIImage(systemName: "arrow.right.circle.fill", withConfiguration: largeConfig), for: .normal)
-        tintColor = .systemYellow
+    init(shape: String) {
+        super.init(frame: .zero)
         
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 35, weight: .light, scale: .default)
+        setImage(UIImage(systemName: shape, withConfiguration: largeConfig), for: .normal)
+        configure()
+    }
+    
+    
+    private func configure() {
+        tintColor           = .systemYellow
+        layer.cornerRadius  = 20
         translatesAutoresizingMaskIntoConstraints = false
     }
     
