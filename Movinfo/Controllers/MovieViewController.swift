@@ -16,7 +16,10 @@ class MovieViewController: UIViewController {
     let movieImage      = MVImageView(frame: .zero)
     var plot            = ""
     var releaseDate     = ""
-   
+    var name            = ""
+    var rated           = ""
+    var runtime         = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureImage()
@@ -71,8 +74,11 @@ class MovieViewController: UIViewController {
         MovInfoManager.shared.fetchMovieData(for: movieName) { result in
             switch result {
             case .success(let mov):
-                self.plot = mov.plot
+                self.plot        = mov.plot
+                self.name        = mov.title
+                self.rated       = mov.rated
                 self.releaseDate = mov.released
+                self.runtime     = mov.runtime
                 let url = URL(string: mov.poster)!
                 DispatchQueue.main.async {
                     self.movieImage.load(url: url)
@@ -88,9 +94,11 @@ class MovieViewController: UIViewController {
         let detailsVC = DetailsViewController()
         
         detailsVC.smallMovieImage.image = movieImage.image
-        detailsVC.movieName.text        = self.movieName.replacingOccurrences(of: "+", with: " ")
+        detailsVC.movieName.text        = name
         detailsVC.movieReleaseDate.text = releaseDate
         detailsVC.moviePlot.text        = plot
+        detailsVC.rated.text            = rated
+        detailsVC.runtime.text          = runtime
         
         present(detailsVC, animated: true, completion: nil)
     }

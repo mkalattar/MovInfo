@@ -15,6 +15,8 @@ class DetailsViewController: UIViewController {
     let movieReleaseDate    = MVLabel()
     let moviePlot           = MVLabel()
     let plotText            = MVLabel()
+    let rated               = MVLabel()
+    let runtime             = MVLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,8 @@ class DetailsViewController: UIViewController {
         configureReleaseDate()
         configurePlotText()
         configurePlot()
+        configureRating()
+        configureRuntime()
     }
 
     
@@ -70,7 +74,7 @@ class DetailsViewController: UIViewController {
         movieReleaseDate.textColor  = .systemGray
         
         NSLayoutConstraint.activate([
-            movieReleaseDate.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 5),
+            movieReleaseDate.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 10),
             movieReleaseDate.leadingAnchor.constraint(equalTo: movieName.leadingAnchor),
             movieReleaseDate.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
@@ -100,6 +104,30 @@ class DetailsViewController: UIViewController {
         ])
     }
     
+    func configureRating() {
+        view.addSubview(rated)
+        rated.font              = UIFont.systemFont(ofSize: 15, weight: .medium)
+        rated.layer.borderWidth = 1
+        rated.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
+        rated.textAlignment     = .center
+        
+        NSLayoutConstraint.activate([
+            rated.centerXAnchor.constraint(equalTo: smallMovieImage.centerXAnchor),
+            rated.bottomAnchor.constraint(equalTo: smallMovieImage.topAnchor, constant: -10),
+            rated.widthAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    func configureRuntime() {
+        view.addSubview(runtime)
+        runtime.font       = UIFont.systemFont(ofSize: 20, weight: .medium)
+        runtime.textColor  = .systemGray
+        
+        NSLayoutConstraint.activate([
+            runtime.leadingAnchor.constraint(equalTo: movieReleaseDate.leadingAnchor),
+            runtime.topAnchor.constraint(equalTo: movieReleaseDate.bottomAnchor, constant: 3)
+        ])
+    }
     
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)

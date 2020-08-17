@@ -13,6 +13,8 @@ struct MovInfoData: Codable {
     let poster: String
     let plot: String
     let released: String
+    let rated: String
+    let runtime: String
 
     enum CodingKeys: String, CodingKey {
         case title      = "Title"
@@ -20,5 +22,7 @@ struct MovInfoData: Codable {
         case poster     = "Poster"
         case plot       = "Plot"
         case released   = "Released"
+        case rated      = "Rated"
+        case runtime    = "Runtime"
     }
 }
