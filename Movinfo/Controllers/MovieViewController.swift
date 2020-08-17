@@ -13,8 +13,8 @@ class MovieViewController: UIViewController {
     var movieName:String!
     
     let detailsButton   = MVButton(buttonLabel: "Details")
-    let image           = UIImage(named: "MVPlaceholder")
-    let movieImage      = UIImageView()
+    let thisImage       = UIImage(named: "MVPlaceholder")
+    let movieImage      = MVImageView(frame: .zero)
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +34,14 @@ class MovieViewController: UIViewController {
         // set up activity view controller
         let imageToShare            = [ movieImage.image! ]
         let activityViewController  = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        
+
         // present the view controller
         self.present(activityViewController, animated: true)
     }
     
     func configureDetailsButton() {
         view.addSubview(detailsButton)
+        detailsButton.addTarget(self, action: #selector(goToDetailsVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             detailsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -53,9 +54,7 @@ class MovieViewController: UIViewController {
     
     func configureImage() {
         view.addSubview(movieImage)
-        movieImage.image                = image
-        movieImage.clipsToBounds        = true
-        movieImage.layer.cornerRadius   = 10
+        movieImage.image = thisImage
         
         // Constraints
         movieImage.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +79,14 @@ class MovieViewController: UIViewController {
                 
             }
         }
+    }
+    
+    @objc func goToDetailsVC() {
+        let detailsVC = DetailsViewController()
+        detailsVC.smallMovieImage.image = movieImage.image
+        
+        
+        present(detailsVC, animated: true, completion: nil)
     }
     
 }

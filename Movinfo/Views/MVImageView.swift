@@ -1,15 +1,15 @@
 //
-//  MVSegmentedControl.swift
+//  MVImageView.swift
 //  Movinfo
 //
-//  Created by Mohamed Attar on 8/9/20.
+//  Created by Mohamed Attar on 8/17/20.
 //  Copyright © 2020 Mohamed Attar. All rights reserved.
 //
 
 import UIKit
 
-class MVSegmentedControl: UISegmentedControl {
-    
+class MVImageView: UIImageView {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,6 +20,8 @@ class MVSegmentedControl: UISegmentedControl {
     }
     
     private func configure() {
-        
+        clipsToBounds        = true
+        layer.cornerRadius   = 10
     }
+
 }
