@@ -24,13 +24,19 @@ class MovieViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        getMovie()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(addTapped))
         view.backgroundColor    = .systemGray6
-        getMovie()
+        
     }
     
     @objc func addTapped(){
+        // set up activity view controller
+        let imageToShare            = [ movieImage.image! ]
+        let activityViewController  = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
         
+        // present the view controller
+        self.present(activityViewController, animated: true)
     }
     
     func configureDetailsButton() {

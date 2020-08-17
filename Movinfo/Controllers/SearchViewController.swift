@@ -87,9 +87,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     func createChooseTypeSegment() {
         view.addSubview(chooseTypeSegment)
-        chooseTypeSegment.selectedSegmentIndex = 0
-        chooseTypeSegment.backgroundColor = .systemFill
-        chooseTypeSegment.selectedSegmentTintColor = .systemGray
+        chooseTypeSegment.selectedSegmentIndex      = 0
+        chooseTypeSegment.backgroundColor           = .systemFill
+        chooseTypeSegment.selectedSegmentTintColor  = .systemGray
        
         // Constraints
         chooseTypeSegment.translatesAutoresizingMaskIntoConstraints = false
@@ -128,9 +128,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }
         
         let movieVC = MovieViewController()
-        let movieNameWithSpaces = searchMovieTextField.text!
-        let movieNameWithoutSpaces = movieNameWithSpaces.replacingOccurrences(of: " ", with: "+")
-        movieVC.movieName = movieNameWithoutSpaces
+        let movieNameWithSpaces     = searchMovieTextField.text!
+        let movieNameWithoutSpaces  = movieNameWithSpaces.replacingOccurrences(of: " ", with: "+")
+        movieVC.movieName           = movieNameWithoutSpaces
         MovInfoManager.shared.fetchMovieData(for: movieNameWithoutSpaces) { result in
             switch result {
             case .success(let mov):
