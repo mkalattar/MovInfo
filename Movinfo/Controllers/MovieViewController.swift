@@ -11,10 +11,11 @@ import UIKit
 class MovieViewController: UIViewController {
     
     var movieName:String!
-    
     let detailsButton   = MVButton(buttonLabel: "Details")
     let thisImage       = UIImage(named: "MVPlaceholder")
     let movieImage      = MVImageView(frame: .zero)
+    var plot            = ""
+    var releaseDate     = ""
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,8 @@ class MovieViewController: UIViewController {
         MovInfoManager.shared.fetchMovieData(for: movieName) { result in
             switch result {
             case .success(let mov):
+                self.plot = mov.plot
+                self.releaseDate = mov.released
                 let url = URL(string: mov.poster)!
                 DispatchQueue.main.async {
                     self.movieImage.load(url: url)
@@ -83,8 +86,11 @@ class MovieViewController: UIViewController {
     
     @objc func goToDetailsVC() {
         let detailsVC = DetailsViewController()
-        detailsVC.smallMovieImage.image = movieImage.image
         
+        detailsVC.smallMovieImage.image = movieImage.image
+        detailsVC.movieName.text        = self.movieName.replacingOccurrences(of: "+", with: " ")
+        detailsVC.movieReleaseDate.text = releaseDate
+        detailsVC.moviePlot.text        = plot
         
         present(detailsVC, animated: true, completion: nil)
     }

@@ -11,10 +11,14 @@ import Foundation
 struct MovInfoData: Codable {
     let title, year: String
     let poster: String
+    let plot: String
+    let released: String
 
     enum CodingKeys: String, CodingKey {
-        case title  = "Title"
-        case year   = "Year"
-        case poster = "Poster"
+        case title      = "Title"
+        case year       = "Year"
+        case poster     = "Poster"
+        case plot       = "Plot"
+        case released   = "Released"
     }
 }
