@@ -22,11 +22,12 @@ class MovieViewController: UIViewController {
     var genre           = ""
     var imdbRating      = ""
     var actors          = ""
+    var awards          = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureImage()
         configureDetailsButton()
+        configureImage()
         getMovie()
     }
     
@@ -61,15 +62,16 @@ class MovieViewController: UIViewController {
     
     func configureImage() {
         view.addSubview(movieImage)
-        movieImage.image = thisImage
-        
+        movieImage.image        = thisImage
+        movieImage.contentMode  = .scaleAspectFill
         // Constraints
+        let padding: CGFloat = 20
         movieImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            movieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            movieImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            movieImage.widthAnchor.constraint(equalToConstant: 367),
-            movieImage.heightAnchor.constraint(equalToConstant: 550)
+            movieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            movieImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            movieImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            movieImage.bottomAnchor.constraint(equalTo: detailsButton.topAnchor, constant: -padding)
         ])
     }
     
@@ -85,6 +87,7 @@ class MovieViewController: UIViewController {
                 self.genre       = mov.genre
                 self.imdbRating  = mov.imdbRating
                 self.actors      = mov.actors
+                self.awards      = mov.awards
                 let url = URL(string: mov.poster)!
                 DispatchQueue.main.async {
                     self.movieImage.load(url: url)
@@ -104,9 +107,10 @@ class MovieViewController: UIViewController {
         detailsVC.movieReleaseDate.text = releaseDate
         detailsVC.moviePlot.text        = plot
         detailsVC.rated.text            = rated
-        detailsVC.runtime.text          = "\(runtime) • \(imdbRating)"
+        detailsVC.runtime.text          = "\(imdbRating) • \(runtime)"
         detailsVC.genre.text            = genre.replacingOccurrences(of: ",", with: " •")
         detailsVC.actors.text           = actors
+        detailsVC.awards.text           = "Awards: \(awards)"
         
         present(detailsVC, animated: true, completion: nil)
     }

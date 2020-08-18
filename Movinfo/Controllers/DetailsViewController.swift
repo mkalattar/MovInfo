@@ -20,10 +20,11 @@ class DetailsViewController: UIViewController {
     let genre                   = MVLabel()
     let actors                  = MVLabel()
     let actorsText              = MVLabel()
+    let awards                  = MVLabel()
     let scrollV                 = UIScrollView(frame: .zero)
     let containerView           = UIView()
     
-    lazy var contentViewSize    = CGSize(width: view.frame.width, height: view.frame.height + 100)
+    lazy var contentViewSize    = CGSize(width: view.frame.width, height: view.frame.height + 400)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class DetailsViewController: UIViewController {
         configureRating()
         configureRuntime()
         configureGenreLabel()
+        configureAwards()
         
         // configureImdbRating()
     }
@@ -194,6 +196,18 @@ class DetailsViewController: UIViewController {
             actors.topAnchor.constraint(equalTo: actorsText.bottomAnchor, constant: 10),
             actors.leadingAnchor.constraint(equalTo: actorsText.leadingAnchor),
             actors.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+    func configureAwards() {
+        containerView.addSubview(awards)
+        awards.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
+        awards.textColor     = .systemGray
+        awards.numberOfLines = 0
+        
+        NSLayoutConstraint.activate([
+            awards.leadingAnchor.constraint(equalTo: movieReleaseDate.leadingAnchor),
+            awards.topAnchor.constraint(equalTo: genre.bottomAnchor, constant: 3),
+            awards.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
