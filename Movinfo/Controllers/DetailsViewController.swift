@@ -17,6 +17,10 @@ class DetailsViewController: UIViewController {
     let plotText            = MVLabel()
     let rated               = MVLabel()
     let runtime             = MVLabel()
+    let genre               = MVLabel()
+    let actors              = MVLabel()
+    let actorsText          = MVLabel()
+    // let imdbRating          = MVLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +29,17 @@ class DetailsViewController: UIViewController {
         configureImage()
         configureMovieName()
         configureReleaseDate()
+        configureActorsText()
+        configureActors()
         configurePlotText()
         configurePlot()
         configureRating()
         configureRuntime()
+        configureGenreLabel()
+        
+        // configureImdbRating()
     }
-
+    
     
     
     func configureImage() {
@@ -86,8 +95,8 @@ class DetailsViewController: UIViewController {
         plotText.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         
         NSLayoutConstraint.activate([
-            plotText.leadingAnchor.constraint(equalTo: smallMovieImage.leadingAnchor),
-            plotText.topAnchor.constraint(equalTo: smallMovieImage.bottomAnchor, constant: 20),
+            plotText.leadingAnchor.constraint(equalTo: actorsText.leadingAnchor),
+            plotText.topAnchor.constraint(equalTo: actors.bottomAnchor, constant: 20),
         ])
     }
     
@@ -128,6 +137,53 @@ class DetailsViewController: UIViewController {
             runtime.topAnchor.constraint(equalTo: movieReleaseDate.bottomAnchor, constant: 3)
         ])
     }
+    
+    func configureGenreLabel() {
+        view.addSubview(genre)
+        genre.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
+        genre.textColor     = .systemGray
+        genre.numberOfLines = 0
+        
+        NSLayoutConstraint.activate([
+            genre.leadingAnchor.constraint(equalTo: movieReleaseDate.leadingAnchor),
+            genre.topAnchor.constraint(equalTo: runtime.bottomAnchor, constant: 3),
+            genre.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    func configureActorsText() {
+        view.addSubview(actorsText)
+        actorsText.text = "Actors"
+        actorsText.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        
+        NSLayoutConstraint.activate([
+            actorsText.leadingAnchor.constraint(equalTo: smallMovieImage.leadingAnchor),
+            actorsText.topAnchor.constraint(equalTo: smallMovieImage.bottomAnchor, constant: 20),
+        ])
+    }
+    
+    func configureActors() {
+        view.addSubview(actors)
+        actors.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
+        actors.textColor     = .systemGray
+        actors.numberOfLines = 0
+        
+        NSLayoutConstraint.activate([
+            actors.topAnchor.constraint(equalTo: actorsText.bottomAnchor, constant: 10),
+            actors.leadingAnchor.constraint(equalTo: actorsText.leadingAnchor),
+            actors.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    //    func configureImdbRating() {
+    //        view.addSubview(imdbRating)
+    //        imdbRating.font          = UIFont.systemFont(ofSize: 21, weight: .medium)
+    //        imdbRating.textColor     = .systemGray
+    //
+    //        NSLayoutConstraint.activate([
+    //
+    //        ])
+    //    }
     
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)

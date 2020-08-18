@@ -19,6 +19,9 @@ class MovieViewController: UIViewController {
     var name            = ""
     var rated           = ""
     var runtime         = ""
+    var genre           = ""
+    var imdbRating      = ""
+    var actors          = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +82,9 @@ class MovieViewController: UIViewController {
                 self.rated       = mov.rated
                 self.releaseDate = mov.released
                 self.runtime     = mov.runtime
+                self.genre       = mov.genre
+                self.imdbRating  = mov.imdbRating
+                self.actors      = mov.actors
                 let url = URL(string: mov.poster)!
                 DispatchQueue.main.async {
                     self.movieImage.load(url: url)
@@ -98,7 +104,9 @@ class MovieViewController: UIViewController {
         detailsVC.movieReleaseDate.text = releaseDate
         detailsVC.moviePlot.text        = plot
         detailsVC.rated.text            = rated
-        detailsVC.runtime.text          = runtime
+        detailsVC.runtime.text          = "\(runtime) • \(imdbRating)"
+        detailsVC.genre.text            = genre.replacingOccurrences(of: ",", with: " •")
+        detailsVC.actors.text           = actors
         
         present(detailsVC, animated: true, completion: nil)
     }

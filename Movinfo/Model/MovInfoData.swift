@@ -15,6 +15,9 @@ struct MovInfoData: Codable {
     let released: String
     let rated: String
     let runtime: String
+    let genre: String
+    let imdbRating: String
+    let actors: String
 
     enum CodingKeys: String, CodingKey {
         case title      = "Title"
@@ -24,5 +27,8 @@ struct MovInfoData: Codable {
         case released   = "Released"
         case rated      = "Rated"
         case runtime    = "Runtime"
+        case genre      = "Genre"
+        case imdbRating = "imdbRating"
+        case actors     = "Actors"
     }
 }
