@@ -9,22 +9,27 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-    let doneButton          = UIButton()
-    let smallMovieImage     = MVImageView(frame: .zero)
-    let movieName           = MVLabel()
-    let movieReleaseDate    = MVLabel()
-    let moviePlot           = MVLabel()
-    let plotText            = MVLabel()
-    let rated               = MVLabel()
-    let runtime             = MVLabel()
-    let genre               = MVLabel()
-    let actors              = MVLabel()
-    let actorsText          = MVLabel()
-    // let imdbRating          = MVLabel()
+    let doneButton              = UIButton()
+    let smallMovieImage         = MVImageView(frame: .zero)
+    let movieName               = MVLabel()
+    let movieReleaseDate        = MVLabel()
+    let moviePlot               = MVLabel()
+    let plotText                = MVLabel()
+    let rated                   = MVLabel()
+    let runtime                 = MVLabel()
+    let genre                   = MVLabel()
+    let actors                  = MVLabel()
+    let actorsText              = MVLabel()
+    let scrollV                 = UIScrollView(frame: .zero)
+    let containerView           = UIView()
+    
+    lazy var contentViewSize    = CGSize(width: view.frame.width, height: view.frame.height + 100)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureScrollView()
+        configureContainerView()
         configureDoneButton()
         configureImage()
         configureMovieName()
@@ -40,14 +45,29 @@ class DetailsViewController: UIViewController {
         // configureImdbRating()
     }
     
+    func configureScrollView() {
+        view.addSubview(scrollV)
+        
+        scrollV.backgroundColor     = .systemBackground
+        scrollV.frame               = self.view.bounds
+        scrollV.contentSize         = contentViewSize
+        scrollV.autoresizingMask    = .flexibleHeight
+        scrollV.bounces             = true
+    }
     
+    func configureContainerView() {
+        scrollV.addSubview(containerView)
+        containerView.backgroundColor = .systemBackground
+        containerView.frame.size      = contentViewSize
+    }
     
     func configureImage() {
-        view.addSubview(smallMovieImage)
+        containerView.addSubview(smallMovieImage)
+        
         smallMovieImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            smallMovieImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            smallMovieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            smallMovieImage.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            smallMovieImage.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 70),
             smallMovieImage.heightAnchor.constraint(equalToConstant: 250),
             smallMovieImage.widthAnchor.constraint(equalToConstant: 167)
         ])
@@ -58,6 +78,8 @@ class DetailsViewController: UIViewController {
         doneButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         doneButton.setTitle("Done", for: .normal)
         doneButton.setTitleColor(.systemYellow, for: .normal)
+        doneButton.layer.cornerRadius = 10
+        doneButton.backgroundColor    = .systemBackground
         
         // Constraint
         doneButton.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +89,7 @@ class DetailsViewController: UIViewController {
         ])
     }
     func configureMovieName() {
-        view.addSubview(movieName)
+        containerView.addSubview(movieName)
         movieName.numberOfLines = 0
         movieName.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         
@@ -78,7 +100,7 @@ class DetailsViewController: UIViewController {
         ])
     }
     func configureReleaseDate() {
-        view.addSubview(movieReleaseDate)
+        containerView.addSubview(movieReleaseDate)
         movieReleaseDate.font       = UIFont.systemFont(ofSize: 20, weight: .medium)
         movieReleaseDate.textColor  = .systemGray
         
@@ -90,7 +112,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configurePlotText() {
-        view.addSubview(plotText)
+        containerView.addSubview(plotText)
         plotText.text = "Plot"
         plotText.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         
@@ -101,7 +123,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configurePlot() {
-        view.addSubview(moviePlot)
+        containerView.addSubview(moviePlot)
         moviePlot.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
         moviePlot.textColor     = .systemGray
         moviePlot.numberOfLines = 0
@@ -114,7 +136,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configureRating() {
-        view.addSubview(rated)
+        containerView.addSubview(rated)
         rated.font              = UIFont.systemFont(ofSize: 15, weight: .medium)
         rated.layer.borderWidth = 1
         rated.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1).cgColor
@@ -128,7 +150,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configureRuntime() {
-        view.addSubview(runtime)
+        containerView.addSubview(runtime)
         runtime.font       = UIFont.systemFont(ofSize: 20, weight: .medium)
         runtime.textColor  = .systemGray
         
@@ -139,7 +161,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configureGenreLabel() {
-        view.addSubview(genre)
+        containerView.addSubview(genre)
         genre.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
         genre.textColor     = .systemGray
         genre.numberOfLines = 0
@@ -152,7 +174,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configureActorsText() {
-        view.addSubview(actorsText)
+        containerView.addSubview(actorsText)
         actorsText.text = "Actors"
         actorsText.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         
@@ -163,7 +185,7 @@ class DetailsViewController: UIViewController {
     }
     
     func configureActors() {
-        view.addSubview(actors)
+        containerView.addSubview(actors)
         actors.font          = UIFont.systemFont(ofSize: 20, weight: .medium)
         actors.textColor     = .systemGray
         actors.numberOfLines = 0
