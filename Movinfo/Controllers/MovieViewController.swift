@@ -14,15 +14,15 @@ class MovieViewController: UIViewController {
     let detailsButton   = MVButton(buttonLabel: "Details")
     let thisImage       = UIImage(named: "MVPlaceholder")
     let movieImage      = MVImageView(frame: .zero)
-    var plot            = ""
-    var releaseDate     = ""
-    var name            = ""
-    var rated           = ""
-    var runtime         = ""
-    var genre           = ""
-    var imdbRating      = ""
-    var actors          = ""
-    var awards          = ""
+    var plot:String!
+    var releaseDate:String!
+    var name:String!
+    var rated:String!
+    var runtime:String!
+    var genre:String!
+    var imdbRating:String!
+    var actors:String!
+    var awards:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,10 +107,10 @@ class MovieViewController: UIViewController {
         detailsVC.movieReleaseDate.text = releaseDate
         detailsVC.moviePlot.text        = plot
         detailsVC.rated.text            = rated
-        detailsVC.runtime.text          = "\(imdbRating) • \(runtime)"
+        detailsVC.runtime.text          = "\(imdbRating ?? "0.0") • \(runtime ?? "00 min")"
         detailsVC.genre.text            = genre.replacingOccurrences(of: ",", with: " •")
         detailsVC.actors.text           = actors
-        detailsVC.awards.text           = "Awards: \(awards)"
+        detailsVC.awards.text           = "Awards: \(awards ?? "N/A")"
         
         present(detailsVC, animated: true, completion: nil)
     }
